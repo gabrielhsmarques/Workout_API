@@ -4,6 +4,8 @@ from sqlalchemy.orm import Mapped, mapped_column, relationship
 from sqlalchemy import DateTime, ForeignKey, Integer, String, Float
 
 
+
+
 class AtletaModel(BaseModel):
     __tablename__ = 'atletas'
 
