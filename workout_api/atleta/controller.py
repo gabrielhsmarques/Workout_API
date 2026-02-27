@@ -78,13 +78,12 @@ async def query(db_session: DataBaseDependency,
     if cpf:
         query = query.filter(AtletaModel.cpf == cpf)
 
-    return await paginate(db_session, query, transformer=lambda atletas: [
+    return await paginate(db_session, query, transformer=lambda atletas:[
         AtletaOutCustom(
             nome=atleta.nome,
             centro_treinamento=atleta.centro_treinamento.nome,
             categoria=atleta.categoria.nome
-        ) for atleta in atletas
-    ])
+        ) for atleta in atletas])
 
 @router.get(
         '/{id}',
@@ -127,7 +126,6 @@ async def query(id: UUID4, db_session: DataBaseDependency, atleta_up: AtletaUpda
         '/{id}',
         summary='Deletar Atleta pelo id',
         status_code=status.HTTP_204_NO_CONTENT,
-        response_model=AtletaOut,
 )
 async def query(id: UUID4, db_session: DataBaseDependency, )->None:
     atleta: AtletaOut = (await db_session.execute(select(AtletaModel).filter_by(id=id))).scalars().first()
