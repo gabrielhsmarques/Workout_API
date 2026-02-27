@@ -1,0 +1,31 @@
+services:
+  db:
+    image: postgres:11-alpine
+    environment:
+      # A senha é definida, mas o método 'trust' irá ignorá-la
+      POSTGRES_USER: workout
+      POSTGRES_PASSWORD: workout
+      POSTGRES_DB: workout
+    ports:
+      - '5433:5432' # Mantendo a porta 5433 para segurança
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    # O healthcheck ainda é útil para garantir que o DB está online
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U workout -d workout"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  workout_api:
+    build: .
+    ports:
+      - '8000:8000'
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  postgres_data:
