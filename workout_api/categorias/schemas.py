@@ -9,4 +9,3 @@ class CategoriaIn(BaseSchema):
 
 class CategoriaOut(CategoriaIn):
     id: Annotated[UUID4, Field(description='Identificador da Categoria')]
-    created_at: Annotated[datetime, Field(description='Data de criação')]

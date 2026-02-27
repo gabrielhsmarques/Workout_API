@@ -1,8 +1,8 @@
 from uuid import uuid4
-
 from fastapi import APIRouter, Body, status, HTTPException
 from pydantic import UUID4
 from sqlalchemy.future import select
+
 from workout_api.categorias.models import CategoriaModel
 from workout_api.categorias.schemas import CategoriaIn, CategoriaOut
 from workout_api.contrib.dependencies import DataBaseDependency
