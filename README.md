@@ -17,8 +17,9 @@ Esta é uma API de gerenciamento de competições de Crossfit, desenvolvida com 
 
 Antes de começar, você precisará ter instalado:
 1. **Python 3.12 ou superior**.
-2. **Docker e Docker Compose**.
-3. **Make** (Utilitário de automação).
+2. **As dependências e bibliotecas utilizadas estão em requirements.txt** 
+3. **Docker e Docker Compose**.
+4. **Make** (Utilitário de automação).
     - *Usuários Windows:* Instale via [Winget](https://github.com/ezwinports/make) (`winget install ezwinports.make`) e certifique-se de que está no seu PATH.
 
 ---
